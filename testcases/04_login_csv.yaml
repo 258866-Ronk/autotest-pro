@@ -1,0 +1,15 @@
+name: 登录数据驱动
+description: 从 CSV 读取多组账号，展开为多条用例
+request:
+  method: POST
+  url: /api/login
+  headers:
+    Content-Type: application/json
+  body:
+    username: "${user}"
+    password: "${pwd}"
+assertions:
+  - type: status_code
+    op: eq
+    expected: 200
+dataSource: data/login_users.csv

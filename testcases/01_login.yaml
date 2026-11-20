@@ -1,0 +1,22 @@
+name: 登录并提取 token
+description: 基础登录用例，提取 token 供后续用例使用
+request:
+  method: POST
+  url: /api/login
+  headers:
+    Content-Type: application/json
+  body:
+    username: "${username}"
+    password: "${password}"
+assertions:
+  - type: status_code
+    op: eq
+    expected: 200
+  - type: json_path
+    path: $.data.token
+    op: not_null
+extract:
+  token: $.data.token
+variables:
+  username: alice
+  password: secret123

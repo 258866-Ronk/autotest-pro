@@ -1,0 +1,9 @@
+name: 健康检查（可并发）
+description: 独立用例，无依赖
+request:
+  method: GET
+  url: /health
+assertions:
+  - type: status_code
+    op: eq
+    expected: 200

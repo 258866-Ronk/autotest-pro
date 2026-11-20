@@ -1,0 +1,20 @@
+name: 创建订单（携带 token）
+description: 使用上一步提取的 token，验证鉴权与下单
+request:
+  method: POST
+  url: /api/orders
+  headers:
+    Content-Type: application/json
+    Authorization: "Bearer ${token}"
+  body:
+    amount: 299
+assertions:
+  - type: status_code
+    op: eq
+    expected: 200
+  - type: json_path
+    path: $.data.status
+    op: eq
+    expected: CREATED
+extract:
+  orderId: $.data.id

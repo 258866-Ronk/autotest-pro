@@ -1,0 +1,12 @@
+name: 商品列表（可并发）
+description: 无变量依赖，可安全并发执行
+request:
+  method: GET
+  url: /api/products
+assertions:
+  - type: status_code
+    op: eq
+    expected: 200
+  - type: json_path
+    path: $.data[0].name
+    op: not_null

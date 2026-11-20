@@ -1,0 +1,16 @@
+name: 查询订单与响应时间
+description: 使用 orderId 关联查询，并校验响应时间
+request:
+  method: GET
+  url: /api/orders/${orderId}
+assertions:
+  - type: status_code
+    op: eq
+    expected: 200
+  - type: json_path
+    path: $.data.id
+    op: eq
+    expected: "${orderId}"
+  - type: response_time
+    op: lt
+    expected: 2000

@@ -1,0 +1,6 @@
+name: default
+timeout: 5
+baseUrl: ""
+variables:
+  username: alice
+  password: secret123
